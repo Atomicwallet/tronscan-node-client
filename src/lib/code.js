@@ -1,3 +1,5 @@
+const btoa = require('btoa');
+
 /* eslint-disable */
 function bin2String(array) {
   return String.fromCharCode.apply(String, array);
@@ -507,9 +509,14 @@ function getStringType(str) {
   return -1;
 }
 
+function encodeString(str) {
+  return Uint8Array.from(base64DecodeFromString(btoa(str)));
+}
+
 module.exports = {
   base64EncodeToString,
   base64DecodeFromString,
   hexStr2byteArray,
   stringToBytes,
+  encodeString,
 };
